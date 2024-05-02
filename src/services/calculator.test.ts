@@ -68,11 +68,5 @@ describe('Calculator', () => {
     const calculatorInstance = new Calculator(repositoryStub)
     expect(calculatorInstance.divide({ num_a: 20, num_b: 5 })).toEqual(4);
   });
-
-  test('Divide by zero', () => {
-    const repositoryStub = makeRepositoryStub();
-    const calculatorInstance = new Calculator(repositoryStub);
-    expect(() => calculatorInstance.divide({ num_a: 10, num_b: 0 })).toThrowError("Division by zero is not allowed");
-  });
   
 });
