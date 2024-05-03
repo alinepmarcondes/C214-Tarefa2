@@ -1,6 +1,5 @@
 import { Calculator, Count } from "../services/Calculator"
 
-
 type Response = {
     success: unknown,
     error: unknown
@@ -11,5 +10,5 @@ export interface CalculatorRepository {
     subtract (count: Count): Response
     multiply (count: Count): Response
     divide (count: Count): Response
-    result (count : Count): Response
+    result: number
 }
