@@ -1,6 +1,7 @@
 import readline from 'readline'
 import { promisify } from 'util'
 import { Count, Calculator } from './services/Calculator'
+import { CalculatorAdapter } from './adapters/CalculatorAdapter'
 
 const reader = readline.createInterface({
   input: process.stdin,
@@ -13,18 +14,19 @@ async function getUserInput (prompt: string): Promise<any> {
   return await userInput(prompt)
 }
 
-const calc = new Calculator()
+const calculatorAdapter = new CalculatorAdapter()
+const calc = new Calculator(calculatorAdapter)
 
 async function addTwoNumbers () {
-    const newCount: Count = {
-        num_a: 0,
-        num_b: 0
-    }
+  const newCount: Count = {
+      num_a: 0,
+      num_b: 0
+  }
 
-    newCount.num_a = await getUserInput('Enter the first number: ')
-    newCount.num_b = await getUserInput('Enter the second number: ')
+  newCount.num_a = await getUserInput('Enter the first number: ')
+  newCount.num_b = await getUserInput('Enter the second number: ')
 
-    calc.add(newCount)
+  calc.add(newCount)
 }
 
 async function subTwoNumbers () {
@@ -72,23 +74,19 @@ async function startCalculator () {
 
       return
     case '1':
-      await addTwoNumbers()
-      console.log('Add result', calc.getResults())
+      console.log('Add result', await addTwoNumbers())
       reader.close()
       return
     case '2':
-      await subTwoNumbers()
-      console.log('Subtraction result', calc.getResults())
+      console.log('Subtraction result', await subTwoNumbers())
       reader.close()
       return
     case '3':
-      await mulTwoNumbers()
-      console.log('Multiply result', calc.getResults())
+      console.log('Multiply result', await mulTwoNumbers())
       reader.close()
       return
     case '4':
-      await divTwoNumbers()
-      console.log('Divide result', calc.getResults())
+      console.log('Divide result', await divTwoNumbers())
       reader.close()
       return
     default:
