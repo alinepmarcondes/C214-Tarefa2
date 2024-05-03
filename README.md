@@ -1,2 +1,2 @@
-[![CI-CD](https://github.com/alinepmarcondes/C214-Tarefa2/blob/main/.github/workflows/cicd.yml/badge.svg)](https://github.com/alinepmarcondes/C214-Tarefa2/blob/main/.github/workflows/cicd.yml)
+[![CI-CD](https://github.com/alinepmarcondes/C214-Tarefa2/actions/workflows/cicd.yml/badge.svg)
 # Calculadora - Tarefa 2
